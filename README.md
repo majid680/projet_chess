@@ -210,9 +210,9 @@ Le barème de correction est le suivant :
 |      Trouver la position du roi         | 3.1 | 1          |
 |      Vérifier s'il y a un échec           | 3.2 | 3          |
 | **Partie 4 : Méthode legal_moves** |                                                                    | **/4**     |
-|      Bien utiliser les copy            | 3.1 | 1          |
-|      Renvoyer la bonne liste des coups légaux             | 3.2 | 3          |
+|      Bien utiliser les copy            | 4.1 | 1          |
+|      Renvoyer la bonne liste des coups légaux             | 4.2 | 3          |
 | **Partie 5 : Recherche** |                                                                    | **/2**     |
-|      Le raisonnement est bon dans le fichier `RECHERCHE.md`             | 3.1 | 1          |
-|      Le coup est correctement implémenté             | 3.2 | 1          |
+|      Le raisonnement est bon dans le fichier `RECHERCHE.md`             | 5.1 | 1          |
+|      Le coup est correctement implémenté             | 5.2 | 1          |
 | **Total**                                 |                                                                           | **/20**    |
