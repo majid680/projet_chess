@@ -196,23 +196,23 @@ Le barème de correction est le suivant :
 
 | **Partie**                                | **Tâche**                                                                 | **Points** |
 |-------------------------------------------|---------------------------------------------------------------------------|------------|
-| **Partie 1 : Initialisation du jeu** |                                                                           | **/5**     |
+| **Partie 1 : Initialisation du jeu** |                                                                           | **/4**     |
 |      Initialisation du plateau            | 1.1 | 2          |
-|      Passage du tour            | 1.2  | 1          |
-|      Mouvement de pièce            | 1.3  | 2          |
-| **Partie 2 : Classes pour les différentes pièces** |                                                               | **/5**     |
-|      Cavalier          | 2.1 | 1          |
-|      Tour          | 2.2 | 1          |
-|      Fou          | 2.3 | 1          |
-|      Dame          | 2.4 | 1          |
-|      Roi          | 2.5 | 1          |
+|      Passage du tour            | 1.2  | 0.5          |
+|      Mouvement de pièce            | 1.3  | 1.5          |
+| **Partie 2 : Classes pour les différentes pièces** |                                                               | **/4**     |
+|      Cavalier          | 2.1 | 0.8          |
+|      Tour          | 2.2 | 0.8          |
+|      Fou          | 2.3 | 0.8          |
+|      Dame          | 2.4 | 0.8          |
+|      Roi          | 2.5 | 0.8         |
 | **Partie 3 : Fonction is_check** |                                                                    | **/4**     |
 |      Trouver la position du roi         | 3.1 | 1          |
 |      Vérifier s'il y a un échec           | 3.2 | 3          |
 | **Partie 4 : Méthode legal_moves** |                                                                    | **/4**     |
 |      Bien utiliser les copy            | 4.1 | 1          |
 |      Renvoyer la bonne liste des coups légaux             | 4.2 | 3          |
-| **Partie 5 : Recherche** |                                                                    | **/2**     |
+| **Partie 5 : Recherche** |                                                                    | **/4**     |
 |      Le raisonnement est bon dans le fichier `RECHERCHE.md`             | 5.1 | 1          |
-|      Le coup est correctement implémenté             | 5.2 | 1          |
+|      Le coup est correctement implémenté             | 5.2 | 3          |
 | **Total**                                 |                                                                           | **/20**    |
