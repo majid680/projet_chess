@@ -35,11 +35,20 @@ class Piece():
         Method that returns all possible moves of a piece, NOT ignoring checks. These move are called legal moves.
         Legal_moves correspond to the coordinates of the different squares the piece can reach legally.
         '''
-        board_init = deepcopy(board) # Generate a copy of the board for tests
         moves = self.get_moves(board)
         legal_moves = []
 
+        for move in moves:
+            board_init = deepcopy(board) # Generate a copy of the board for tests
+            start_pos = self.get_pos()
+            board_init.move_piece(start_pos, move)
+            if not is_check(board_init, self.get_color()):
+                legal_moves.append(move)
+
+
         # TODO: Écrire votre code ici
+     
+
 
         return legal_moves
     
@@ -116,8 +125,23 @@ class Knight(Piece):
         board_arr = board.get_board()
         
         # TODO: Écrire votre code ici
+        current_pos = self.get_pos()
+        
+        y, x = self.get_pos()      # position actuelle de Knight
+        mouvement_possible = [(1,2),(1,-2),(-1,2),(-1,-2),(2,1),(2,-1),(-2,1),(-2,-1)]
+        
+        for dx, dy in mouvement_possible:
+            new_x = current_pos[0] + dx
+            new_y = current_pos[1] + dy
+            if 0 <= new_x < 8 and 0 <= new_y < 8:
+                move = (new_x, new_y)
+                if board_arr[move] is None:
+                    moves.append(move)
+                elif board_arr[move].get_color() != self.get_color():
+                    moves.append(move)
 
         return moves
+        
 
 
 class Rook(Piece):
@@ -134,10 +158,52 @@ class Rook(Piece):
         board_arr = board.get_board()
         
         # TODO: Écrire votre code ici
+        current_pos = self.get_pos()      # position actuelle de Rock
+
         
+        for i in range(current_pos[0] - 1, -1, -1):    # mouvement possible vers le haut  d'échequier
+            move = (i, current_pos[1])
+            if board_arr[move] is None:
+                moves.append(move)
+            elif board_arr[move].get_color() != self.get_color():
+                moves.append(move)
+                break
+            else:
+                break
+
+        for i in range(current_pos[0] + 1, 8): # mouvement possible vers le bas  d'échequier
+            move = (i, current_pos[1])
+            if board_arr[move] is None:
+                moves.append(move)
+            elif board_arr[move].get_color() != self.get_color():
+                moves.append(move)
+                break
+            else:
+                break
+
+        for j in range(current_pos[1] - 1, -1, -1): # mouvement possible vers la gauche d'échequier
+            move = (current_pos[0], j)
+            if board_arr[move] is None:
+                moves.append(move)
+            elif board_arr[move].get_color() != self.get_color():
+                moves.append(move)
+                break
+            else:
+                break
+
+        for j in range(current_pos[1] + 1, 8):  # mouvement possible vers la droite  d'échequier
+            move = (current_pos[0], j)
+            if board_arr[move] is None:
+                moves.append(move)
+            elif board_arr[move].get_color() != self.get_color():
+                moves.append(move)
+                break
+            else:
+                break
+
         return moves
 
-
+        
 class Bishop(Piece):
     def __init__(self, start_pos, color):
         super().__init__(start_pos, color)
@@ -152,7 +218,55 @@ class Bishop(Piece):
         board_arr = board.get_board()
 
         # TODO: Écrire votre code ici
+        current_pos = self.get_pos()      # position de Bishop
+        
+        for i, j in zip(range(current_pos[0] - 1, -1, -1), range(current_pos[1] - 1, -1, -1)): # Mouvement en haut-gauche 
+            move = (i, j)
+            if board_arr[move] is None:
+                moves.append(move)
+            elif board_arr[move].get_color() != self.get_color():
+                moves.append(move)  
+                break
+            else:
+                break
 
+        
+        for i, j in zip(range(current_pos[0] - 1, -1, -1), range(current_pos[1] + 1, 8)):#  Mouvement en haut-droit 
+            move = (i, j)
+            if board_arr[move] is None:
+                moves.append(move)
+            elif board_arr[move].get_color() != self.get_color():
+                moves.append(move)
+                break
+            else:
+                break
+
+        for i, j in zip(range(current_pos[0] + 1, 8), range(current_pos[1] - 1, -1, -1)):  #Mouvement en bas gauche-droit 
+            move = (i, j)
+            if board_arr[move] is None:
+                moves.append(move)
+            elif board_arr[move].get_color() != self.get_color():
+                moves.append(move)
+                break
+            else:
+                break
+
+        
+        for i, j in zip(range(current_pos[0] + 1, 8), range(current_pos[1] + 1, 8)):   #Mouvement en bas-droit 
+            move = (i, j)
+            if board_arr[move] is None:
+                moves.append(move)
+            elif board_arr[move].get_color() != self.get_color():
+                moves.append(move)
+                break
+            else:
+                break
+
+        
+        
+        
+        
+        
         return moves
 
 
@@ -170,7 +284,90 @@ class Queen(Piece):
         board_arr = board.get_board()
 
         # TODO: Écrire votre code ici
+        current_pos = self.get_pos()      # # on peut combiner Rook et Bishop pour faire Queen
+        
+        for i, j in zip(range(current_pos[0] - 1, -1, -1), range(current_pos[1] - 1, -1, -1)): # Mouvement en haut-gauche 
+            move = (i, j)
+            if board_arr[move] is None:
+                moves.append(move)
+            elif board_arr[move].get_color() != self.get_color():
+                moves.append(move)  
+                break
+            else:
+                break
 
+        
+        for i, j in zip(range(current_pos[0] - 1, -1, -1), range(current_pos[1] + 1, 8)):#  Mouvement en haut-droit 
+            move = (i, j)
+            if board_arr[move] is None:
+                moves.append(move)
+            elif board_arr[move].get_color() != self.get_color():
+                moves.append(move)
+                break
+            else:
+                break
+
+        for i, j in zip(range(current_pos[0] + 1, 8), range(current_pos[1] - 1, -1, -1)):  #Mouvement en bas gauche-droit 
+            move = (i, j)
+            if board_arr[move] is None:
+                moves.append(move)
+            elif board_arr[move].get_color() != self.get_color():
+                moves.append(move)
+                break
+            else:
+                break
+
+        
+        for i, j in zip(range(current_pos[0] + 1, 8), range(current_pos[1] + 1, 8)):   #Mouvement en bas-droit 
+            move = (i, j)
+            if board_arr[move] is None:
+                moves.append(move)
+            elif board_arr[move].get_color() != self.get_color():
+                moves.append(move)
+                break
+            else:
+                break                             
+        for i in range(current_pos[0] - 1, -1, -1):    # mouvement possible vers le haut  d'échequier
+            move = (i, current_pos[1])
+            if board_arr[move] is None:
+                moves.append(move)
+            elif board_arr[move].get_color() != self.get_color():
+                moves.append(move)
+                break
+            else:
+                break
+
+        for i in range(current_pos[0] + 1, 8): # mouvement possible vers le bas  d'échequier
+            move = (i, current_pos[1])
+            if board_arr[move] is None:
+                moves.append(move)
+            elif board_arr[move].get_color() != self.get_color():
+                moves.append(move)
+                break
+            else:
+                break
+
+        for j in range(current_pos[1] - 1, -1, -1): # mouvement possible vers la gauche d'échequier
+            move = (current_pos[0], j)
+            if board_arr[move] is None:
+                moves.append(move)
+            elif board_arr[move].get_color() != self.get_color():
+                moves.append(move)
+                break
+            else:
+                break
+
+        for j in range(current_pos[1] + 1, 8):  # mouvement possible vers la droite  d'échequier
+            move = (current_pos[0], j)
+            if board_arr[move] is None:
+                moves.append(move)
+            elif board_arr[move].get_color() != self.get_color():
+                moves.append(move)
+                break
+            else:
+                break
+        
+        
         return moves
 
 
@@ -184,10 +381,26 @@ class King(Piece):
         Method that returns all available moves of a piece, ignoring checks. Moves correspond to the coordinates of
         the different squares the piece can reach.
         '''
-        moves = [] # List of the possible movements
+        moves = []  # List of the possible movements
         board_arr = board.get_board()
 
         # TODO: Écrire votre code ici
+        current_pos = self.get_pos()  # position actuelle du roi
+
+        # Le roi peut aller dans toutes les directions mais seulement d’une case
+        directions = [(-1, -1), (-1, 0), (-1, 1),
+                      (0, -1),          (0, 1),
+                      (1, -1),  (1, 0), (1, 1)]
+
+        for dx, dy in directions:
+            new_x = current_pos[0] + dx
+            new_y = current_pos[1] + dy
+            if 0 <= new_x < 8 and 0 <= new_y < 8:
+                move = (new_x, new_y)
+                if board_arr[move] is None:
+                    moves.append(move)
+                elif board_arr[move].get_color() != self.get_color():
+                    moves.append(move)
 
         return moves
 
@@ -201,10 +414,29 @@ def is_check(board, color):
     board_arr = board.get_board()
 
     # TODO: Écrire votre code ici
+    
+
+    for i in range(8):
+        for j in range(8):
+            piece = board_arr[i, j]
+            if piece is not None and piece.name == 'king' and piece.get_color() == color:
+                king_pos = (i, j)
+                break
+
+    if king_pos is None:
+        return False
+
+    for i in range(8):
+        for j in range(8):
+            piece = board_arr[i, j]
+            if piece is not None and piece.get_color() != color:
+                possible_moves = piece.get_moves(board)
+                if king_pos in possible_moves:
+                    return True
 
     return False
 
-
+        
 def sum_coordinates(a,b):
     return tuple(map(sum, zip(a, b)))
 

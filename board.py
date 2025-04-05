@@ -37,11 +37,23 @@ class Board():
 
         Lowercase letters stand for white pieces while uppercase stand for black pieces.
         '''
-        # Init chess board using numpy array with strings
+        
         board = np.empty((8,8), dtype=object)
 
         # TODO: Écrire votre code ici
-                    
+        lignes = self.scheme.splitlines() # découpe en 8 ligne
+        for i, ligne in enumerate(lignes):
+            for j, lettre  in enumerate("".join(ligne.split())):# pour obtenir l'indice et la lettre de la piece dans chaque ligne
+                 if lettre == ".":
+                    board[i,j] = None 
+                 else:
+                    couleur = "black" if lettre.isupper() else "white"  
+                    board[i, j] = pieces_dict[lettre.lower()]((i, j), couleur)
+
+
+
+
+        
         return board
 
     def piece_at(self, coordinate : tuple):
@@ -52,7 +64,13 @@ class Board():
         Function that update self.turn
         '''
         # TODO: Écrire votre code ici et retirer pass
-        pass
+        if self.last_piece.get_color() == "black":
+            self.turn = "white" 
+        elif self.last_piece =="white":
+            self.turn = "black"
+    
+    
+            
     
     def move_piece(self, start_pos, end_pos):
         '''
@@ -61,9 +79,13 @@ class Board():
         - update the piece that moved and remove any captured piece
         - update self.last_piece
         '''
-        # TODO: Écrire votre code ici et retirer pass
-        pass
+        piece = self.board[start_pos]
+        self.board[end_pos] = piece
+        self.board[start_pos] = None
+        piece.set_new_pos(end_pos)
+        self.last_piece = piece
 
+    
     def push(self, start_pos, end_pos):
         # Move piece
         self.move_piece(start_pos, end_pos)

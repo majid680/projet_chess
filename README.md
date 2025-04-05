@@ -46,7 +46,7 @@ Détails sur les fichiers :
 
 #### 1.1 : Initialisation du plateau
 
-Dans cette partie, vous devrez modifier la méthode `init_board` permettant d'initialiser le plateau de jeu. Vous devrez utiliser l'attribut `self.scheme` défini dans la méthode `__init__` ainsi que le dictionnaire `pieces_dict` afin de construire un numpy array de dimension (8x8) composé uniquement d'objets:
+Dans cette partie, vous devrez modifier la méthode `init_board` permettant d'initialiser le plateau de jeu. Vous devrez utiliser l'attribut `self.scheme` défini dans la méthode `__init__` ainsi que le dictionnaire `pieces_dict` afin de construire un numpy array de dimension (8x8) composé uniquement d'objets: #do
 - Les cases vides représentée par des points `.` dans `self.scheme` devront être remplacé par l'objet python `None`
 - Les cases représentée par des lettres dans `self.scheme` devront être remplacées par les pièce correspondante à l'aide du dictionnaire `pieces_dict`.
 
@@ -55,12 +55,12 @@ Dans cette partie, vous devrez modifier la méthode `init_board` permettant d'in
 Une fois cette partie complétée, les pièces du jeu devraient apparaître sur le plateau du jeu comme suit. 
 
 <img src="images/init_board.png" alt="alt text" style="width: 670px; height: auto;">
-
+ # done 
 
 #### 1.2 : Passage du tour
 
 Pour cette partie, l'objectif est de compléter la méthode `switch_turn` de l'objet `Board`, qui a pour rôle de modifier l'attribut `self.turn` afin d'alterner le tour du joueur à chaque mouvement effectué. Cette méthode doit changer la valeur de `self.turn` entre `white` et `black` chaque fois que cette dernière est appelée, assurant ainsi une alternance correcte des tours entre les deux joueurs.
-
+ # done
 #### 1.3 : Mouvement de pièce
 
 Maintenant, vous devez compléter la fonction `move_piece`, qui permet de déplacer une pièce sur le plateau. La fonction prend en paramètre la position de départ (`start_pos`) et la position d'arrivée (`end_pos`) de la pièce. 
@@ -70,7 +70,7 @@ Vous devez :
 - Mettre à jour l'attribut ` self.board` en déplaçant la pièce de `start_pos` à `end_pos`, en pensant bien à remplacer la position de départ par l'objet python `None`. 
 - Mettre à jour l'objet de la pièce pour refléter sa nouvelle position en utilisant la méthode `set_new_pos`. 
 - Actualiser l'attribut `self.last_piece` pointant vers la dernière pièce déplacée. 
-
+ # done
 ### Partie 2 : Implémentation des mouvements pour chaque pièce 
 
 Pour cette deuxième partie du projet, vous allez maintenant devoir compléter les méthodes `get_moves` dans chacune des classes pièces (fou, roi, reine, etc.) à l'intérieur du fichier `pieces.py`. Cette méthode utilise:
@@ -90,19 +90,19 @@ Cette liste des mouvement comporte à la fois les mouvement simples de la pièce
 
 > À part le pion, toutes les pièces capturent de la même manière qu'elles se déplacent.
 
-Pour vous aider, la classe pour le pion (`Pawn`) a déjà été implémentée pour vous. À noter que les classes spécifiques à chaque type de pièces héritent des fonctionalités de la classe parent `Piece`. 
+Pour vous aider, la classe pour le pion (`Pawn`) a déjà été implémentée pour vous. À noter que les classes spécifiques à chaque type de pièces héritent des fonctionalités de la classe parent `Piece`. done 
 
 #### 2.1 : Classe `Knight` (Cavalier)
 
 Le cavalier ("knight") se déplace de deux cases dans une direction suivies d'une case dans une direction perpendiculaire, formant ainsi un "L".
 
-> ⚠️ Il s'agit de la seule pièce capable d'enjamber les autres pièces.
+> ⚠️ Il s'agit de la seule pièce capable d'enjamber les autres pièces. done
 
 <img src="images/knight_moves.png" alt="alt text" style="width: 570px; height: auto;">
 
 #### 2.2 : Classe `Rook` (Tour)
 
-La tour ("rook") se déplace en ligne droite suivant ainsi la ligne ou la colonne correspondant à sa position de départ. Lors de ce déplacement, elle peut se déplacer d'autant de cases qu'elle le souhaite. 
+La tour ("rook") se déplace en ligne droite suivant ainsi la ligne ou la colonne correspondant à sa position de départ. Lors de ce déplacement, elle peut se déplacer d'autant de cases qu'elle le souhaite.  done
 
 <img src="images/rook_moves.png" alt="alt text" style="width: 670px; height: auto;">
 
@@ -110,18 +110,18 @@ La tour ("rook") se déplace en ligne droite suivant ainsi la ligne ou la colonn
 #### 2.3 : Classe `Bishop` (Fou)
 
 Le fou ("bishop") se déplace en suivant les diagonales correspondantes à sa position de départ. Lors de ce déplacement, celui-ci peut se déplacer d'autant de cases qu'il le souhaite.
-
+ done
 <img src="images/bishop_moves.png" alt="alt text" style="width: 570px; height: auto;">
 
 #### 2.4 : Classe `Queen` (Reine)
 
-La reine ("queen") combine à la fois les déplcaments de la tour (en lignes droites) et du fou (en diagonale).
+La reine ("queen") combine à la fois les déplcaments de la tour (en lignes droites) et du fou (en diagonale). done
 
 <img src="images/queen_moves.png" alt="alt text" style="width: 570px; height: auto;">
 
 #### 2.5 : Classe `King` (Roi)
 
-Le roi ("king") peut se déplacer d'une seule case à la fois, dans n'importe quelle direction (haut, bas, gauche ou droite). 
+Le roi ("king") peut se déplacer d'une seule case à la fois, dans n'importe quelle direction (haut, bas, gauche ou droite). done
 
 <img src="images/king_moves.png" alt="alt text" style="width: 570px; height: auto;">
 
@@ -135,11 +135,11 @@ Le pion peut se déplacer d'une seule case en avant (figure B), sauf lors de son
 
 ### Partie 3 : Compléter la fonction `is_check` 
 
-Vous devez maintenant compléter la fonction `is_check`, qui se retrouve dans le fichier `pieces.py`. Cette fonction va déterminer si une position donnée de l'objet `Board` contient un **échec** pour la couleur `color` (c'est-à-dire, si le roi de la couleur donnée peut être capturé).
+Vous devez maintenant compléter la fonction `is_check`, qui se retrouve dans le fichier `pieces.py`. Cette fonction va déterminer si une position donnée de l'objet `Board` contient un **échec** pour la couleur `color` (c'est-à-dire, si le roi de la couleur donnée peut être capturé). done
 
 ### Partie 4 : Compléter la méthode `legal_moves`
 
-Dans la partie 2, nous avons défini la méthode `get_pos` renvoyant tous les mouvements possibles d'une pièce à l'instant t. Cependant, cette méthode ne tient pas compte d'une règle essentielle des échecs disant qu'un mouvement n'est **LÉGAL** que si ce dernier ne vient pas mettre en danger la sécurité de son roi. Autrement dit, le mouvement du'une pièce blanche ne **PEUT PAS** générer un échec sur le roi blanc. Par exemple dans cette position, c'est au tour des blancs de jouer mais ces derniers ne peuvent pas jouer leur cavalier en position (5,2) car tous mouvements de ce dernier viendrait générer un échec sur le roi, ce qui n'est pas **LÉGAL**.
+Dans la partie 2, nous avons défini la méthode `get_pos` renvoyant tous les mouvements possibles d'une pièce à l'instant t. Cependant, cette méthode ne tient pas compte d'une règle essentielle des échecs disant qu'un mouvement n'est **LÉGAL** que si ce dernier ne vient pas mettre en danger la sécurité de son roi. Autrement dit, le mouvement du'une pièce blanche ne **PEUT PAS** générer un échec sur le roi blanc. Par exemple dans cette position, c'est au tour des blancs de jouer mais ces derniers ne peuvent pas jouer leur cavalier en position (5,2) car tous mouvements de ce dernier viendrait générer un échec sur le roi, ce qui n'est pas **LÉGAL**. done
 
 <img src="images/clouage.png" alt="alt text" style="width: 670px; height: auto;">
 
