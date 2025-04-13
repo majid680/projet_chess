@@ -143,15 +143,15 @@ Dans la partie 2, nous avons défini la méthode `get_pos` renvoyant tous les mo
 
 <img src="images/clouage.png" alt="alt text" style="width: 670px; height: auto;">
 
-Pour palier ce problème, vous devrez compléter la méthode `legal_moves` dans la classe parente `Piece` (car commune à toutes les pièces). Cette méthode a pour objectif de venir *simuler* chacun des mouvements renvoyés par la méthode `get_pos` et d'ajouter uniquement les mouvement **LÉGAUX** dans une nouvelle liste appelée `legal_moves`. Afin de vérifier qu'un mouvement est **LÉGAL**  vous devrez utiliser la fonction `is_check` créée dans la partie 3 ainsi que la méthode `move_piece` développée dans la partie 1.3.
+Pour palier ce problème, vous devrez compléter la méthode `legal_moves` dans la classe parente `Piece` (car commune à toutes les pièces). Cette méthode a pour objectif de venir *simuler* chacun des mouvements renvoyés par la méthode `get_pos` et d'ajouter uniquement les mouvement **LÉGAUX** dans une nouvelle liste appelée `legal_moves`. Afin de vérifier qu'un mouvement est **LÉGAL**  vous devrez utiliser la fonction `is_check` créée dans la partie 3 ainsi que la méthode `move_piece` développée dans la partie 1.3. done
 
 > Note: Afin de *simuler* les différents coups sans modifier la position du plateau de jeu, nous utiliserons des **copies** de l'objet `Board` à l'aide de la fonction `deepcopy`.
 
 ### Partie 5 : Recherche (2 point)
 
 Programmer ne résume pas à compléter des fonctions à trous. Pour cette raison, cette partie fera appel à votre compréhension globale du code et à votre capacité à l'adapter. Votre objectif sera de venir intégrer au choix **UN** des mouvements suivant:
-- Le roque (ou castle)
-- La prise en passant
+- Le roque (ou castle)  done
+- La prise en passant 
 
 À part l'explication des coups qui suit, aucune autre directive ne sera donnée concernant la manière de programmer ces coups. Ce sera à vous uniquement de déterminer s'il faut modifier/ajouter de nouveaux éléments au code.
 

@@ -45,7 +45,6 @@ class Piece():
             if not is_check(board_init, self.get_color()):
                 legal_moves.append(move)
 
-
         # TODO: Écrire votre code ici
      
 
@@ -201,8 +200,10 @@ class Rook(Piece):
             else:
                 break
 
+        
         return moves
 
+    
         
 class Bishop(Piece):
     def __init__(self, start_pos, color):
@@ -387,6 +388,7 @@ class King(Piece):
         # TODO: Écrire votre code ici
         current_pos = self.get_pos()  # position actuelle du roi
 
+        y,x  = self.get_pos()
         # Le roi peut aller dans toutes les directions mais seulement d’une case
         directions = [(-1, -1), (-1, 0), (-1, 1),
                       (0, -1),          (0, 1),
@@ -401,6 +403,15 @@ class King(Piece):
                     moves.append(move)
                 elif board_arr[move].get_color() != self.get_color():
                     moves.append(move)
+
+        if self.move_count == 0:
+            # Petit mouvement
+            if ( isinstance(board_arr[y,7], Rook) and board_arr[y,7].move_count == 0 and board_arr[y,5] is None and board_arr[y,6] is None):
+                moves.append((y,6))
+
+            # Grand mouvement
+            if ( isinstance(board_arr[y,0], Rook) and board_arr[y,0].move_count == 0 and board_arr[y,1] is None and board_arr[y,2] is None and board_arr[y,3] is None):
+                moves.append((y,2))  
 
         return moves
 

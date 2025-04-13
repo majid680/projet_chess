@@ -66,7 +66,7 @@ class Board():
         # TODO: Écrire votre code ici et retirer pass
         if self.last_piece.get_color() == "black":
             self.turn = "white" 
-        elif self.last_piece =="white":
+        elif self.last_piece.get_color() =="white":
             self.turn = "black"
     
     
@@ -79,10 +79,35 @@ class Board():
         - update the piece that moved and remove any captured piece
         - update self.last_piece
         '''
+        from pieces import King, Rook
         piece = self.board[start_pos]
-        self.board[end_pos] = piece
-        self.board[start_pos] = None
-        piece.set_new_pos(end_pos)
+        y, x = start_pos
+
+        if isinstance(piece,King) and abs(x - end_pos[1]) == 2:
+            
+            self.board[end_pos] = piece
+            self.board[start_pos] = None
+            piece.set_new_pos(end_pos)
+
+            
+            if end_pos[1] == 6:  # Petit roque (kingside)
+                rook_pos = (y, 7)
+                new_rook_pos = (y, 5)
+            else:  # Grand roque (queenside)
+                rook_pos = (y, 0)
+                new_rook_pos = (y, 3)
+            
+            rook = self.board[rook_pos]
+            self.board[new_rook_pos] = rook
+            self.board[rook_pos] = None
+            rook.set_new_pos(new_rook_pos)
+
+        else:
+            # Mouvement normal
+            self.board[end_pos] = piece
+            self.board[start_pos] = None
+            piece.set_new_pos(end_pos)
+
         self.last_piece = piece
 
     
